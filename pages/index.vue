@@ -16,6 +16,7 @@ import Vue from 'vue'
 export default Vue.extend({
   middleware: ['auth'],
   mounted() {
+    console.log('teste')
     this.$api.multi.get().then((response) => {
       console.log(response)
     })
