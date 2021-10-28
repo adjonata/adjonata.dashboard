@@ -37,7 +37,7 @@ interface Social {
   link: string
 }
 interface Multi {
-  about: string
+  about: string | null
   knowledges: Knowledge[]
   projects: Project[]
   social: Social[]

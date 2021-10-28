@@ -28,7 +28,7 @@ export default {
   css: ['@/styles/global.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/api.ts'],
+  plugins: ['@/plugins/api/index.ts', '@/plugins/axios.ts'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -44,11 +44,12 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    'vue-sweetalert2/nuxt',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://54.232.220.148:8080',
+    baseURL: 'https://localhost:8080',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
