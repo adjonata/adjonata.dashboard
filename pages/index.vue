@@ -3,6 +3,10 @@
     <h1>
       <span class="aaa"> Alex </span>
     </h1>
+    <div>
+      <button @click="login">Login</button>
+    </div>
+    <div><button @click="showState">Show state</button></div>
   </div>
 </template>
 
@@ -10,9 +14,22 @@
 import Vue from 'vue'
 
 export default Vue.extend({
+  middleware: ['auth'],
   mounted() {
-    this.$api.multi.get().then((res) => console.log(res))
-    console.log(this.$api)
+    this.$api.multi.get().then((response) => {
+      console.log(response)
+    })
+  },
+  methods: {
+    async login() {
+      await this.$store.dispatch('auth/handleLogin', {
+        email: 'alexdjonata30@gmail.com',
+        password: 'Abalon456_',
+      })
+    },
+    showState() {
+      console.log(this.$store.state.auth)
+    },
   },
 })
 </script>
