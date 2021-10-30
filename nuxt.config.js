@@ -1,3 +1,5 @@
+import axiosConfig from './config/axios.ts'
+
 export default {
   target: 'static',
   ssr: false,
@@ -48,9 +50,7 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    baseURL: 'https://localhost:8080',
-  },
+  axios: axiosConfig,
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
