@@ -24,17 +24,18 @@ export const actions: ActionTree<AuthState, AuthState> = {
     return new Promise((resolve, reject) => {
       const auth = this.app.$api.auth
 
-      try {
-        auth.login(body).then((response) => {
+      auth
+        .login(body)
+        .then((response) => {
           commit('SET_LOGGED_IN', true)
           commit('SET_USER', response)
           resolve(response)
         })
-      } catch (error) {
-        commit('SET_LOGGED_IN', false)
-        commit('SET_USER', null)
-        reject(error)
-      }
+        .catch((error) => {
+          commit('SET_LOGGED_IN', false)
+          commit('SET_USER', null)
+          reject(error)
+        })
     })
   },
   handleLogout({ commit }) {
@@ -43,4 +44,7 @@ export const actions: ActionTree<AuthState, AuthState> = {
   },
 }
 
-export const getters: GetterTree<AuthState, AuthState> = {}
+export const getters: GetterTree<AuthState, AuthState> = {
+  user: (state) => state.user,
+  loggedIn: (state) => state.loggedIn,
+}
