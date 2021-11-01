@@ -1,42 +1,30 @@
 <template>
-  <div>
-    <h1>
-      <span class="aaa"> Alex </span>
-    </h1>
-    <div>
-      <button @click="login">Login</button>
-    </div>
-    <div><button @click="showState">Show state</button></div>
+  <div class="home">
+    {{ phrase }}
+    {{ about }}
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapGetters, mapActions } from 'vuex'
 
 export default Vue.extend({
   middleware: ['auth'],
-  mounted() {
-    console.log('teste')
-    this.$api.multi.get().then((response) => {
-      console.log(response)
-    })
+  data: () => ({}),
+  computed: {
+    ...mapGetters('phrase', ['loaded', 'phrase']),
+    ...mapGetters('informations', ['about']),
+  },
+  created() {
+    this.getPhrase()
+    this.getInformations()
   },
   methods: {
-    async login() {
-      await this.$store.dispatch('auth/handleLogin', {
-        email: 'alexdjonata30@gmail.com',
-        password: 'Abalon456_',
-      })
-    },
-    showState() {
-      console.log(this.$store.state.auth)
-    },
+    ...mapActions('phrase', ['getPhrase']),
+    ...mapActions('informations', ['getInformations']),
   },
 })
 </script>
 
-<style lang="scss">
-.aaa {
-  background: green;
-}
-</style>
+<style lang="scss" scoped></style>
