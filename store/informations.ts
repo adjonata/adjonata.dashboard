@@ -2,7 +2,7 @@ import { GetterTree, ActionTree, MutationTree } from 'vuex'
 
 interface InformationsState extends Multi {}
 
-const defaultState = {
+const defaultState: Multi = {
   about: null,
   knowledges: [],
   projects: [],
@@ -14,14 +14,14 @@ export const state = (): InformationsState => ({ ...defaultState })
 export const mutations: MutationTree<InformationsState> = {
   SET_INFORMATIONS(state, { about, projects, knowledges, social }: Multi) {
     state.about = about
-    state.projects = projects
     state.knowledges = knowledges
+    state.projects = projects
     state.social = social
   },
 }
 
 export const actions: ActionTree<InformationsState, InformationsState> = {
-  async seekInformations({ commit }) {
+  async getInformations({ commit }) {
     const multi = this.app.$api.multi
 
     try {
@@ -35,4 +35,9 @@ export const actions: ActionTree<InformationsState, InformationsState> = {
   },
 }
 
-export const getters: GetterTree<InformationsState, InformationsState> = {}
+export const getters: GetterTree<InformationsState, InformationsState> = {
+  about: (state) => state.about,
+  knowledges: (state) => state.knowledges,
+  projects: (state) => state.projects,
+  social: (state) => state.social,
+}
