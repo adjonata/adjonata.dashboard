@@ -29,11 +29,13 @@ export const actions: ActionTree<AuthState, AuthState> = {
         .then((response) => {
           commit('SET_LOGGED_IN', true)
           commit('SET_USER', response)
+          this.$axios.setToken(response.authorization)
           resolve(response)
         })
         .catch((error) => {
           commit('SET_LOGGED_IN', false)
           commit('SET_USER', null)
+          this.$axios.setToken(false)
           reject(error)
         })
     })
