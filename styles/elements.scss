@@ -1,0 +1,39 @@
+@import 'variables';
+
+$input-width: 240px;
+$input-height: 43px;
+$input-padding: 0 10px;
+
+input {
+  width: $input-width;
+  height: $input-height;
+  border-radius: 5px;
+  padding: $input-padding;
+  border: solid 2px $blue-light;
+
+  &:focus,
+  &:hover {
+    border-color: $blue-dark;
+  }
+}
+
+button {
+  width: $input-width;
+  height: $input-height;
+  border: 0;
+  font-weight: 400;
+  color: $white;
+  border-radius: 5px;
+  padding: $input-padding;
+  background-color: $blue-light;
+  transition: filter 0.3s;
+  font-size: 15px;
+
+  &[type='submit'] {
+    cursor: pointer;
+  }
+
+  &:hover {
+    filter: brightness(92%);
+  }
+}
