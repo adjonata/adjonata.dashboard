@@ -12,8 +12,10 @@ export default Vue.extend({
   }),
   methods: {
     async login() {
+      // Check for error
       const { error: validationError } = ValidateLogin(this.form)
 
+      // If there is an error, it returns an alert
       if (validationError) {
         return this.$swal.fire({
           icon: 'error',
@@ -22,6 +24,7 @@ export default Vue.extend({
         })
       }
 
+      // Perform login action
       await this.$store
         .dispatch('auth/handleLogin', this.form)
         .then(() => {
@@ -41,12 +44,16 @@ export default Vue.extend({
 
 <template>
   <main class="login">
+    <header class="login__header">
+      <img src="~/assets/boy.svg" alt="Boy Image" />
+    </header>
     <form class="login__form" @submit.prevent="login">
-      <input v-model="form.email" type="email" placeholder="Email:" required />
-      <input
+      <h2>Dashboard</h2>
+      <DInput v-model="form.email" type="email" label="E-mail:" required />
+      <DInput
         v-model="form.password"
         type="password"
-        placeholder="Password:"
+        label="Password:"
         required
       />
       <button type="submit">Login</button>
@@ -55,26 +62,57 @@ export default Vue.extend({
 </template>
 
 <style lang="scss" scoped>
+@import '~/styles/flex', '~/styles/variables';
+
 .login {
+  @extend .flex-row-center;
+
   height: 100vh;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @media (max-width: $mobile) {
+    flex-direction: column;
+  }
+  @media (min-width: $tablet) {
+    padding-top: 60px;
+  }
+
+  &__header {
+    text-align: center;
+    img {
+      width: 380px;
+
+      @media (max-width: $mobile) {
+        width: 300px;
+      }
+    }
+  }
 
   &__form {
     display: flex;
     flex-direction: column;
 
-    input {
-      width: 200px;
-      padding: 10px;
-      border-radius: 5px;
-      border: solid 1px #cecece;
-      margin-bottom: 10px;
+    @media (min-width: $tablet) {
+      margin-left: 30px;
     }
 
+    h2 {
+      color: $grey-dark;
+      font-weight: 300;
+      text-transform: uppercase;
+      padding-bottom: 15px;
+      font-size: 26px;
+      letter-spacing: 3px;
+
+      @media (max-width: $mobile) {
+        text-align: center;
+      }
+    }
+
+    input {
+      margin-bottom: 10px;
+    }
     button {
+      margin-top: 10px;
     }
   }
 }
