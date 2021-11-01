@@ -1,7 +1,6 @@
 interface About {
   id?: string
   description: string
-  knowledges: string
 }
 interface Auth {
   id?: string
@@ -37,7 +36,7 @@ interface Social {
   link: string
 }
 interface Multi {
-  about: string | null
+  about: About | null
   knowledges: Knowledge[]
   projects: Project[]
   social: Social[]
