@@ -1,30 +1,24 @@
-<template>
-  <div class="home">
-    {{ phrase }}
-    {{ about }}
-  </div>
-</template>
-
 <script lang="ts">
 import Vue from 'vue'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default Vue.extend({
   middleware: ['auth'],
   data: () => ({}),
   computed: {
-    ...mapGetters('phrase', ['loaded', 'phrase']),
     ...mapGetters('informations', ['about']),
-  },
-  created() {
-    this.getPhrase()
-    this.getInformations()
-  },
-  methods: {
-    ...mapActions('phrase', ['getPhrase']),
-    ...mapActions('informations', ['getInformations']),
   },
 })
 </script>
 
-<style lang="scss" scoped></style>
+<template>
+  <div class="home">Home</div>
+</template>
+
+<style lang="scss" scoped>
+@import '~/styles/flex.scss';
+
+.home {
+  @extend .flex-column-center;
+}
+</style>
