@@ -50,7 +50,16 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/api/index.ts', '@/plugins/axios.ts'],
+  plugins: [
+    '@/plugins/api/index.ts',
+    '@/plugins/axios.ts',
+    '@/plugins/pensador/index.ts',
+  ],
+
+  env: {
+    back_env: process.env.BACK_ENV,
+    api_url: process.env.API_URL,
+  },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
