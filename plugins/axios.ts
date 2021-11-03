@@ -2,7 +2,11 @@ import { Plugin } from '@nuxt/types'
 
 const axiosPlugin: Plugin = ({ $axios }) => {
   $axios.onError((error) => {
-    return Promise.reject(error.response)
+    if (error.response) {
+      return Promise.reject(error.response)
+    } else {
+      return null
+    }
   })
 }
 
