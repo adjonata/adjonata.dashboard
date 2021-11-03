@@ -61,7 +61,7 @@ export default Vue.extend({
   </main>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '~/styles/flex', '~/styles/variables';
 
 .login {
@@ -100,7 +100,7 @@ export default Vue.extend({
       font-weight: 300;
       text-transform: uppercase;
       padding-bottom: 15px;
-      font-size: 26px;
+      font-size: 28px;
       letter-spacing: 3px;
 
       @media (max-width: $mobile) {
@@ -109,7 +109,8 @@ export default Vue.extend({
     }
 
     input {
-      margin-bottom: 10px;
+      letter-spacing: 0.8px;
+      color: $grey-light !important;
     }
     button {
       margin-top: 10px;
