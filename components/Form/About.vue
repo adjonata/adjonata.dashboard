@@ -31,7 +31,22 @@ export default Vue.extend({
         })
       }
 
-      this.$emit('save', this.form)
+      this.$swal
+        .fire({
+          title: 'Confirm?',
+          text: 'A new version will replace the old one.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Yes',
+          cancelButtonColor: '#d33',
+          cancelButtonText: 'No',
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            this.$emit('save', this.form)
+          }
+        })
     },
   },
 })
