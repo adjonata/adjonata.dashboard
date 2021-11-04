@@ -11,11 +11,6 @@ const sections: Section[] = [
     icon: 'home',
   },
   {
-    title: 'About',
-    path: '/about',
-    icon: 'help',
-  },
-  {
     title: 'Knowledges',
     path: '/knowledges',
     icon: 'account_balance',
