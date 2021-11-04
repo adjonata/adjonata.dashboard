@@ -43,8 +43,9 @@ export default Vue.extend({
   cursor: pointer;
 
   h4 {
-    font-weight: 300;
-    letter-spacing: 1.3px;
+    font-weight: 500;
+    color: $grey-light;
+    letter-spacing: 1px;
     font-size: 16px;
   }
 
@@ -55,6 +56,9 @@ export default Vue.extend({
   }
 
   &.selected {
+    h4 {
+      color: $black-dark;
+    }
     span {
       color: $blue-dark;
     }
