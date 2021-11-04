@@ -11,13 +11,17 @@ export default Vue.extend({
       type: String,
       required: true,
     },
+    width: {
+      type: String,
+      default: '500px',
+    },
   },
 })
 </script>
 
 <template>
   <div v-if="active" class="modal">
-    <div class="modal__content">
+    <div class="modal__content" :style="{ width }">
       <div class="modal__content-header">
         <span v-text="title" />
         <button class="small" @click="$emit('close')">
@@ -46,7 +50,6 @@ export default Vue.extend({
   @extend .flex-row-center;
 
   &__content {
-    width: 500px;
     max-width: 90%;
     min-height: 200px;
     display: flex;
