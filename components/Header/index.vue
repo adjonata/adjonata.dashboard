@@ -7,10 +7,10 @@ export default Vue.extend({
     sections,
   }),
   methods: {
-    logout() {
-      this.$store.dispatch('auth/handleLogout').then(() => {
-        this.$router.push('/login')
-      })
+    async logout() {
+      await this.$store.dispatch('auth/handleLogout')
+      await this.$store.dispatch('informations/setLoaded', false)
+      this.$router.push('/login')
     },
   },
 })
@@ -37,7 +37,7 @@ export default Vue.extend({
 </template>
 
 <style scoped lang="scss">
-@import '~/styles/flex';
+@import '~/styles/flex', '~/styles/variables';
 
 .header {
   @extend .flex-column-center;
@@ -49,6 +49,7 @@ export default Vue.extend({
 
     &-button {
       @extend .flex-row-center;
+      cursor: pointer;
       padding: 5px 10px;
 
       span.material-icons {
@@ -59,6 +60,11 @@ export default Vue.extend({
 
   &__menu {
     @extend .flex-row-center;
+    flex-wrap: wrap;
+
+    @media (max-width: $mobile) {
+      padding: 0 15px;
+    }
   }
 }
 </style>
