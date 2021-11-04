@@ -4,12 +4,13 @@ $input-width: 240px;
 $input-height: 43px;
 $input-padding: 0 10px;
 
-input {
+input,
+textarea {
   width: $input-width;
   height: $input-height;
   border-radius: 5px;
   padding: $input-padding;
-  border: solid 2px $blue-light;
+  border: solid 1px $grey-light;
 
   &:focus,
   &:hover {
@@ -17,22 +18,39 @@ input {
   }
 }
 
-button {
-  width: $input-width;
-  height: $input-height;
-  border: 0;
-  font-weight: 400;
-  color: $white;
-  border-radius: 5px;
-  padding: $input-padding;
-  background-color: $blue-light;
-  transition: filter 0.3s;
-  font-size: 15px;
+textarea {
+  font-size: 14px;
+  line-height: 21px;
+}
 
-  &[type='submit'] {
+button {
+  &.submit {
+    width: $input-width;
+    height: $input-height;
+    border: 0;
+    font-weight: 400;
+    color: $white-light;
+    border-radius: 5px;
+    padding: $input-padding;
+    background-color: $blue-light;
+    font-size: 15px;
     cursor: pointer;
   }
 
+  &.small {
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: 0;
+    border-radius: 12px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  transition: filter 0.3s;
   &:hover {
     filter: brightness(92%);
   }
