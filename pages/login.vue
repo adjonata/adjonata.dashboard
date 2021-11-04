@@ -56,7 +56,7 @@ export default Vue.extend({
         label="Password:"
         required
       />
-      <button type="submit">Login</button>
+      <button class="submit" type="submit">Login</button>
     </form>
   </main>
 </template>
@@ -111,6 +111,7 @@ export default Vue.extend({
     input {
       letter-spacing: 0.8px;
       color: $grey-light !important;
+      border: solid 2px $blue-light;
     }
     button {
       margin-top: 10px;
