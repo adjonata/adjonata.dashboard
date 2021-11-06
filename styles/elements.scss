@@ -1,4 +1,4 @@
-@import 'variables';
+@import 'variables', 'flex';
 
 $input-width: 240px;
 $input-height: 43px;
@@ -35,6 +35,12 @@ button {
     background-color: $blue-light;
     font-size: 15px;
     cursor: pointer;
+
+    span.material-icons {
+      padding-right: 3px;
+    }
+
+    @extend .flex-row-center;
   }
 
   &.small {
@@ -45,13 +51,34 @@ button {
     border-radius: 12px;
     cursor: pointer;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @extend .flex-row-center;
+  }
+
+  &.clear {
+    border: 0;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+
+    @extend .flex-row-center;
+  }
+
+  &.outlined {
+    border: solid 2px $blue-light;
+    border-radius: 12px;
+    height: 40px;
+    padding: 8px 15px;
+    cursor: pointer;
+
+    span.material-icons {
+      padding-right: 3px;
+    }
+
+    @extend .flex-row-center;
   }
 
   transition: filter 0.3s;
-  &:hover {
+  &:hover:not(.outlined) {
     filter: brightness(92%);
   }
 }
