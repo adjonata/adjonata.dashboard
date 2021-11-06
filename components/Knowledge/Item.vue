@@ -36,10 +36,10 @@ export default Vue.extend({
       />
     </div>
     <div class="knowledge-item__actions">
-      <button class="small">
+      <button class="small" @click="$emit('edit')">
         <span class="material-icons">edit</span>
       </button>
-      <button class="small">
+      <button class="small" @click="$emit('delete')">
         <span class="material-icons">delete</span>
       </button>
     </div>
