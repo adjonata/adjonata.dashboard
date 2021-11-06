@@ -1,9 +1,9 @@
 interface About {
-  id?: string
+  _id?: string
   description: string
 }
 interface Auth {
-  id?: string
+  _id?: string
   email: string
   password: string
 }
@@ -15,13 +15,13 @@ interface AuthLogin {
   }
 }
 interface Knowledge {
-  id?: string
+  _id?: string
   link?: string
   title: string
   image: string
 }
 interface Project {
-  id?: string
+  _id?: string
   image: string
   title: string
   description?: string
@@ -30,7 +30,7 @@ interface Project {
   color?: string
 }
 interface Social {
-  id?: string
+  _id?: string
   title: string
   image?: string
   link: string
