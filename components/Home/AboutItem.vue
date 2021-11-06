@@ -56,6 +56,7 @@ export default Vue.extend({
       letter-spacing: 0.6px;
       line-height: 25px;
       font-size: 14px;
+      white-space: pre-wrap;
     }
   }
   @media (max-width: $mobile) {
