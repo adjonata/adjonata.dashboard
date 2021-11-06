@@ -55,6 +55,8 @@ export default Vue.extend({
     display: flex;
     flex-direction: column;
     background: $white-light;
+    box-shadow: $shadow;
+    border-radius: 5px;
 
     &-header {
       width: 100%;
