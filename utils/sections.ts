@@ -11,14 +11,14 @@ const sections: Section[] = [
     icon: 'home',
   },
   {
-    title: 'Knowledges',
-    path: '/knowledges',
-    icon: 'account_balance',
-  },
-  {
     title: 'Projects',
     path: '/projects',
     icon: 'build',
+  },
+  {
+    title: 'Knowledges',
+    path: '/knowledges',
+    icon: 'account_balance',
   },
   {
     title: 'Social',
