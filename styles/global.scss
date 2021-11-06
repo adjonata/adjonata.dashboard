@@ -14,6 +14,7 @@ body {
 
 .form {
   width: 100%;
+  padding: 0 25px 25px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -21,12 +22,17 @@ body {
   .d-input,
   .d-textarea {
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
 
   button.submit {
     width: 100%;
     margin-top: 15px;
+  }
+
+  textarea,
+  input {
+    width: 100%;
   }
 }
 
