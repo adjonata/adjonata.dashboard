@@ -1,36 +1,37 @@
 import { Plugin } from '@nuxt/types'
+import { AxiosResponse } from 'axios'
 import apiRoutes from './apiRoutes'
 
 // Interface to use in Context
 interface ApiPlugin {
   auth: {
-    register(body: Auth): Promise<AuthLogin>
-    login(body: Auth): Promise<AuthLogin>
+    register(body: Auth): Promise<AxiosResponse<AuthLogin>>
+    login(body: Auth): Promise<AxiosResponse<AuthLogin>>
   }
   about: {
-    get(): Promise<About>
-    update(body: About): Promise<About>
+    get(): Promise<AxiosResponse<About>>
+    update(body: About): Promise<AxiosResponse<About>>
   }
   knowledge: {
-    get(): Promise<Knowledge[]>
-    create(body: Knowledge): Promise<Knowledge>
-    update(body: Knowledge, id: string): Promise<Knowledge>
-    delete(id: string): Promise<Knowledge>
+    get(): Promise<AxiosResponse<Knowledge>[]>
+    create(body: Knowledge): Promise<AxiosResponse<Knowledge>>
+    update(body: Knowledge, id: string): Promise<AxiosResponse<Knowledge>>
+    delete(id: string): Promise<AxiosResponse<Knowledge>>
   }
   project: {
-    get(): Promise<Project[]>
-    create(body: Project): Promise<Project>
-    update(body: Project, id: string): Promise<Project>
-    delete(id: string): Promise<Project>
+    get(): Promise<AxiosResponse<Project>[]>
+    create(body: Project): Promise<AxiosResponse<Project>>
+    update(body: Project, id: string): Promise<AxiosResponse<Project>>
+    delete(id: string): Promise<AxiosResponse<Project>>
   }
   social: {
-    get(): Promise<Social[]>
-    create(body: Social): Promise<Social>
-    update(body: Social, id: string): Promise<Social>
-    delete(id: string): Promise<Social>
+    get(): Promise<AxiosResponse<Social>[]>
+    create(body: Social): Promise<AxiosResponse<Social>>
+    update(body: Social, id: string): Promise<AxiosResponse<Social>>
+    delete(id: string): Promise<AxiosResponse<Social>>
   }
   multi: {
-    get(): Promise<Multi>
+    get(): Promise<AxiosResponse<Multi>>
   }
 }
 
