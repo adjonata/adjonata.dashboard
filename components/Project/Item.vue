@@ -63,6 +63,7 @@ export default Vue.extend({
 @import '~/styles/variables', '~/styles/flex';
 
 .project-item {
+  width: 250px;
   padding: 20px 30px;
   border-radius: 10px;
   box-shadow: $shadow;
@@ -80,6 +81,10 @@ export default Vue.extend({
       font-weight: 500;
       margin: 15px 0 5px 0;
       color: $white-dark;
+    }
+    p {
+      color: $white-dark;
+      padding: 15px 0;
     }
   }
 

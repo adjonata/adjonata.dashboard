@@ -66,7 +66,7 @@ export default Vue.extend({
 </script>
 
 <template>
-  <form class="knowledge-form form" @submit.prevent="submit">
+  <form class="project-form form" @submit.prevent="submit">
     <DInput v-model="form.title" label="Title" type="text" />
     <DTextarea v-model="form.description" label="Description" type="text" />
     <DInput v-model="form.image" label="Image link" type="text" />
@@ -77,4 +77,10 @@ export default Vue.extend({
   </form>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.project-form {
+  textarea {
+    height: 150px;
+  }
+}
+</style>

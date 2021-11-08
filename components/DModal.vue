@@ -39,24 +39,27 @@ export default Vue.extend({
 @import '~/styles/variables', '~/styles/flex';
 
 .modal {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.3);
   width: 100%;
-  min-height: 100vh;
-  overflow: auto;
+  padding: 20px 0 40px;
+  min-height: 100%;
+  overflow-y: auto;
 
   @extend .flex-row-center;
 
   &__content {
     max-width: 90%;
     min-height: 200px;
+    max-height: auto;
     display: flex;
     flex-direction: column;
     background: $black-light;
     box-shadow: $shadow;
     border-radius: 5px;
+    overflow-y: auto;
 
     &-header {
       width: 100%;
