@@ -22,6 +22,10 @@ export default {
         'http-equiv': 'Content-Security-Policy',
         content: 'upgrade-insecure-requests',
       },
+      {
+        name: 'theme-color',
+        content: '#1E282D',
+      },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -57,7 +61,6 @@ export default {
   ],
 
   env: {
-    back_env: process.env.BACK_ENV,
     api_url: process.env.API_URL,
   },
 
