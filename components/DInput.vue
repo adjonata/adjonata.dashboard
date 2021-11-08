@@ -35,15 +35,19 @@ export default Vue.extend({
 </template>
 
 <style lang="scss" scoped>
+@import '~/styles/variables';
+
 .d-input {
   display: flex;
   flex-direction: column;
   font-weight: 500;
   margin: 5px 0;
   text-align: left !important;
+  color: $white-dark;
 
   input {
     margin-top: 4px;
+    background: $black-light-2;
   }
 }
 </style>

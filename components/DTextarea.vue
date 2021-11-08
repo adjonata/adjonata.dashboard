@@ -29,18 +29,22 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+@import '~/styles/variables';
+
 .d-textarea {
   display: flex;
   flex-direction: column;
   font-weight: 500;
   margin: 5px 0;
   text-align: left !important;
+  color: $white-dark;
 
   textarea {
     width: 100%;
     margin-top: 4px;
-    padding: 10px;
+    padding: 10px 15px;
     resize: vertical;
+    background: $black-light-2;
   }
 }
 </style>

@@ -40,12 +40,14 @@ export default Vue.extend({
     letter-spacing: 0.5px;
     line-height: 25px;
     max-width: 780px;
+    color: $white-dark;
   }
 
   h4 {
     font-size: 16px;
     font-weight: 300;
     padding: 8px;
+    color: $grey-light;
   }
 
   &__refresh {

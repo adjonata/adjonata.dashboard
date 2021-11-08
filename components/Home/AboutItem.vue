@@ -33,7 +33,7 @@ export default Vue.extend({
   max-width: 90%;
   padding: 30px;
   border-radius: 5px;
-  background: $white-light;
+  background: $black-light;
   box-shadow: $shadow;
 
   display: flex;
@@ -57,6 +57,7 @@ export default Vue.extend({
       line-height: 25px;
       font-size: 14px;
       white-space: pre-wrap;
+      color: $white-dark;
     }
   }
   @media (max-width: $mobile) {

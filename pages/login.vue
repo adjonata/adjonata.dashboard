@@ -96,7 +96,7 @@ export default Vue.extend({
     }
 
     h2 {
-      color: $grey-dark;
+      color: $white-dark;
       font-weight: 300;
       text-transform: uppercase;
       padding-bottom: 15px;

@@ -57,10 +57,10 @@ export default Vue.extend({
 
   &.selected {
     h4 {
-      color: $black-dark;
+      color: $white-dark;
     }
     span {
-      color: $blue-dark;
+      color: $white-light;
     }
   }
 }

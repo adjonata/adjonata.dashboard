@@ -53,7 +53,7 @@ export default Vue.extend({
   padding: 20px 30px;
   border-radius: 10px;
   box-shadow: $shadow;
-  background: $white-light;
+  background: $black-light;
 
   &__infos {
     @extend .flex-column-center;
@@ -66,6 +66,7 @@ export default Vue.extend({
     h3 {
       font-weight: 500;
       margin: 15px 0 5px 0;
+      color: $white-dark;
     }
   }
 

@@ -46,6 +46,7 @@ export default Vue.extend({
     display: flex;
     justify-content: flex-end;
     padding: 20px;
+    color: $grey-light;
 
     &-button {
       @extend .flex-row-center;

@@ -54,7 +54,7 @@ export default Vue.extend({
     min-height: 200px;
     display: flex;
     flex-direction: column;
-    background: $white-light;
+    background: $black-light;
     box-shadow: $shadow;
     border-radius: 5px;
 
@@ -64,11 +64,18 @@ export default Vue.extend({
       justify-content: space-between;
       align-items: center;
       padding: 15px;
-      border-bottom: solid 1px $white-dark;
+      border-bottom: solid 1px $black-dark;
 
       & > span {
         font-weight: 500;
         font-size: 20px;
+        color: $white-dark;
+      }
+
+      button {
+        span.material-icons {
+          color: $white-dark;
+        }
       }
     }
 
