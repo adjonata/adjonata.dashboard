@@ -8,6 +8,7 @@
         :image="knowledge.image"
         :link="knowledge.link"
         @edit="openFormToEdit(knowledge)"
+        @delete="deleteKnowledge(knowledge._id)"
       />
     </div>
 
@@ -29,6 +30,7 @@
         :initial-value="modalForm.value || {}"
         @save="createKnowledge"
         @update="updateKnowledge"
+        @close="modalForm.show = false"
       />
     </DModal>
   </div>
@@ -68,27 +70,34 @@ export default Vue.extend({
       })
     },
 
-    async updateKnowledge(value: Knowledge) {
+    async updateKnowledge(form: Knowledge) {
       if (!this.modalForm.value || !this.modalForm.value._id) return
 
-      await this.$api.knowledge
-        .update(value, this.modalForm.value._id)
-        .then(({ data }) => {
-          const updatedKnowledges = this.knowledges.map(
-            (knowledge: Knowledge) => {
-              if (knowledge._id === data._id) {
-                return data
-              } else {
-                return knowledge
-              }
-            }
-          )
+      const _id = this.modalForm.value._id
 
-          this.$store.dispatch('informations/updateInformation', {
-            key: 'knowledges',
-            value: updatedKnowledges,
-          })
+      await this.$api.knowledge.update(form, _id).then(() => {
+        const updatedKnowledges = this.knowledges.map((knowledge: Knowledge) =>
+          knowledge._id === _id ? { _id, ...form } : knowledge
+        )
+
+        this.$store.dispatch('informations/updateInformation', {
+          key: 'knowledges',
+          value: updatedKnowledges,
         })
+      })
+    },
+
+    async deleteKnowledge(_id: string) {
+      await this.$api.knowledge.delete(_id).then(() => {
+        const updatedKnowledges = this.knowledges.filter(
+          (knowledge: Knowledge) => knowledge._id !== _id
+        )
+
+        this.$store.dispatch('informations/updateInformation', {
+          key: 'knowledges',
+          value: updatedKnowledges,
+        })
+      })
     },
   },
 })
