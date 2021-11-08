@@ -37,9 +37,12 @@ export default Vue.extend({
       } else {
         this.$emit('save', this.form)
       }
+
+      this.$emit('close')
     },
     fillForm() {
-      const formKeys = Object.keys(this.form) as Array<keyof typeof this.form>
+      const form = this.form
+      const formKeys = Object.keys(form) as Array<keyof typeof form>
 
       for (const key of formKeys) {
         if (key in this.initialValue) {
