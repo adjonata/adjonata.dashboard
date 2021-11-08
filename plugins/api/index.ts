@@ -1,37 +1,38 @@
 import { Plugin } from '@nuxt/types'
-import { AxiosResponse } from 'axios'
 import apiRoutes from './apiRoutes'
+
+type ApiResponse<T> = Promise<T>
 
 // Interface to use in Context
 interface ApiPlugin {
   auth: {
-    register(body: Auth): Promise<AxiosResponse<AuthLogin>>
-    login(body: Auth): Promise<AxiosResponse<AuthLogin>>
+    register(body: Auth): ApiResponse<AuthLogin>
+    login(body: Auth): ApiResponse<AuthLogin>
   }
   about: {
-    get(): Promise<AxiosResponse<About>>
-    update(body: About): Promise<AxiosResponse<About>>
+    get(): ApiResponse<About>
+    update(body: About): ApiResponse<About>
   }
   knowledge: {
-    get(): Promise<AxiosResponse<Knowledge>[]>
-    create(body: Knowledge): Promise<AxiosResponse<Knowledge>>
-    update(body: Knowledge, id: string): Promise<AxiosResponse<Knowledge>>
-    delete(id: string): Promise<AxiosResponse<Knowledge>>
+    get(): ApiResponse<Knowledge>[]
+    create(body: Knowledge): ApiResponse<Knowledge>
+    update(body: Knowledge, id: string): ApiResponse<Knowledge>
+    delete(id: string): ApiResponse<Knowledge>
   }
   project: {
-    get(): Promise<AxiosResponse<Project>[]>
-    create(body: Project): Promise<AxiosResponse<Project>>
-    update(body: Project, id: string): Promise<AxiosResponse<Project>>
-    delete(id: string): Promise<AxiosResponse<Project>>
+    get(): ApiResponse<Project>[]
+    create(body: Project): ApiResponse<Project>
+    update(body: Project, id: string): ApiResponse<Project>
+    delete(id: string): ApiResponse<Project>
   }
   social: {
-    get(): Promise<AxiosResponse<Social>[]>
-    create(body: Social): Promise<AxiosResponse<Social>>
-    update(body: Social, id: string): Promise<AxiosResponse<Social>>
-    delete(id: string): Promise<AxiosResponse<Social>>
+    get(): ApiResponse<Social>[]
+    create(body: Social): ApiResponse<Social>
+    update(body: Social, id: string): ApiResponse<Social>
+    delete(id: string): ApiResponse<Social>
   }
   multi: {
-    get(): Promise<AxiosResponse<Multi>>
+    get(): ApiResponse<Multi>
   }
 }
 
