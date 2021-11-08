@@ -6,6 +6,9 @@ import { AboutForm } from '~/utils/about/validate'
 export default Vue.extend({
   middleware: ['auth', 'syncInformations'],
   data: () => ({ showAboutModal: false }),
+  head: () => ({
+    title: 'Dashboard - Home',
+  }),
   computed: {
     ...mapGetters('informations', [
       'about',

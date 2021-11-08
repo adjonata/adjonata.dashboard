@@ -10,6 +10,9 @@ export default Vue.extend({
       password: '',
     },
   }),
+  head: () => ({
+    title: 'Dashboard - Login',
+  }),
   methods: {
     async login() {
       // Check for error
