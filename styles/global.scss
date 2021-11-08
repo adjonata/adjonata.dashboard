@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color: $white-dark;
+  background-color: $black-dark;
 }
 
 .form {
@@ -31,13 +31,18 @@ body {
   }
 
   textarea,
-  input {
+  input:not([type=checkbox]) {
     width: 100%;
+    color: $white-dark;
+  }
+
+  @media (max-width: $mobile) {
+    padding: 0 10px 25px;
   }
 }
 
 .link {
-  border-bottom: solid 1px $grey-light;
+  border-bottom: dotted 1px $grey-light;
   transition: border-bottom-color 0.3s;
   padding-bottom: 2px;
   cursor: pointer;
