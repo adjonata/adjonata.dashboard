@@ -17,21 +17,27 @@ export default Vue.extend({})
   width: 800px;
   max-width: 90%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   flex-wrap: wrap;
 
   @media (max-width: $mobile) {
     justify-content: space-around;
+
+    .d-item {
+      margin-bottom: 30px;
+      &.large {
+        width: 80%;
+      }
+      &.small {
+        width: 45%;
+      }
+    }
   }
 
-  .d-item {
-    margin-bottom: 30px;
-    &.large {
-      width: 80%;
-    }
-    &.small {
-      width: 45%;
+  @media (min-width: $tablet) {
+    .d-item {
+      margin-right: 15px;
     }
   }
 }

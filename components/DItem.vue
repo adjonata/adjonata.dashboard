@@ -73,6 +73,7 @@ export default Vue.extend({
 @import '~/styles/variables', '~/styles/flex';
 
 .d-item {
+  width: 250px;
   padding: 20px 30px;
   border-radius: 10px;
   box-shadow: $shadow;
