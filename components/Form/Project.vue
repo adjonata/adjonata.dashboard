@@ -16,15 +16,12 @@ export default Vue.extend({
       description: '',
       link: '',
       image: '',
-      spotlight: true,
+      spotlight: false,
       color: '',
     },
   }),
   created() {
     this.fillForm()
-  },
-  mounted() {
-    console.log(this.initialValue)
   },
   methods: {
     submit() {
@@ -54,7 +51,7 @@ export default Vue.extend({
       for (const key of formKeys) {
         if (key in this.initialValue) {
           if (key === 'spotlight') {
-            form[key] = Boolean(this.initialValue)
+            form[key] = Boolean(this.initialValue[key])
           } else {
             form[key] = this.initialValue[key]
           }

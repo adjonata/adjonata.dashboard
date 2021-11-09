@@ -45,17 +45,19 @@ export default Vue.extend({
 </script>
 
 <template>
-  <article
-    :class="['d-item', size]"
-    :style="{ borderColor: color ? color : null }"
-  >
+  <article :class="['d-item', size]">
     <div class="d-item__infos">
+      <div v-if="spotlight" class="d-item__infos-spotlight">
+        <span class="material-icons"> star </span>
+      </div>
       <img :src="image" :alt="title + '.png'" />
       <h3
         :class="{ link: !!link, spotlight }"
         @click="link ? openLink() : null"
-        v-text="title"
-      />
+      >
+        <div :style="{ backgroundColor: color || null }" />
+        {{ title }}
+      </h3>
       <p v-if="description" v-text="description" />
     </div>
     <div class="d-item__actions">
@@ -91,11 +93,27 @@ export default Vue.extend({
     h3 {
       font-weight: 500;
       margin: 15px 0 5px 0;
+      padding-bottom: 5px;
       color: $white-dark;
+      @extend .flex-row-center;
+
+      div {
+        height: 23px;
+        width: 23px;
+        border-radius: 50%;
+        margin-right: 6px;
+      }
     }
     p {
       color: $white-dark;
       padding: 15px 0;
+    }
+
+    &-spotlight {
+      margin-bottom: 15px;
+      span {
+        color: rgb(214, 224, 71);
+      }
     }
   }
 

@@ -66,7 +66,17 @@ export const actions: ActionTree<InformationsState, InformationsState> = {
 export const getters: GetterTree<InformationsState, InformationsState> = {
   about: (state) => state.about,
   knowledges: (state) => state.knowledges,
-  projects: (state) => state.projects,
+  projects: (state) => {
+    const projects = [...state.projects].sort((project) => {
+      if (project.spotlight) {
+        return -1
+      } else {
+        return 0
+      }
+    })
+
+    return projects
+  },
   social: (state) => state.social,
   loadedInformation: (state) => state.loaded,
 }
