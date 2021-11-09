@@ -53,14 +53,16 @@ export default Vue.extend({
     },
 
     async deleteProject(_id: string) {
-      await this.$api.project.delete(_id).then(() => {
-        const updatedProjects = this.projects.filter(
-          (project: Project) => project._id !== _id
-        )
+      await this.$confirm().then(async () => {
+        await this.$api.project.delete(_id).then(() => {
+          const updatedProjects = this.projects.filter(
+            (project: Project) => project._id !== _id
+          )
 
-        this.$store.dispatch('informations/updateInformation', {
-          key: 'projects',
-          value: updatedProjects,
+          this.$store.dispatch('informations/updateInformation', {
+            key: 'projects',
+            value: updatedProjects,
+          })
         })
       })
     },

@@ -53,14 +53,16 @@ export default Vue.extend({
     },
 
     async deleteKnowledge(_id: string) {
-      await this.$api.knowledge.delete(_id).then(() => {
-        const updatedKnowledges = this.knowledges.filter(
-          (knowledge: Knowledge) => knowledge._id !== _id
-        )
+      await this.$confirm().then(async () => {
+        await this.$api.knowledge.delete(_id).then(() => {
+          const updatedKnowledges = this.knowledges.filter(
+            (knowledge: Knowledge) => knowledge._id !== _id
+          )
 
-        this.$store.dispatch('informations/updateInformation', {
-          key: 'knowledges',
-          value: updatedKnowledges,
+          this.$store.dispatch('informations/updateInformation', {
+            key: 'knowledges',
+            value: updatedKnowledges,
+          })
         })
       })
     },
