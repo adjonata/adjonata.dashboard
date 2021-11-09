@@ -72,8 +72,8 @@ export default Vue.extend({
 
 <template>
   <div class="projects">
-    <div class="projects__list">
-      <ProjectItem
+    <DList>
+      <DItem
         v-for="(project, index) in projects"
         :key="'project_' + index"
         :title="project.title"
@@ -82,10 +82,11 @@ export default Vue.extend({
         :color="project.color"
         :spotlight="project.spotlight"
         :description="project.description"
+        size="large"
         @edit="openFormToEdit(project)"
         @delete="deleteProject(project._id)"
       />
-    </div>
+    </DList>
 
     <div class="projects__bottom">
       <button class="submit" @click="openFormToCreate">
@@ -117,19 +118,6 @@ export default Vue.extend({
 .projects {
   @extend .flex-column-center;
   padding: 40px 0;
-
-  &__list {
-    width: 800px;
-    max-width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-
-    .project-item {
-      margin: 15px;
-    }
-  }
 
   &__bottom {
     width: 800px;

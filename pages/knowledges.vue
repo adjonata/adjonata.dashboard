@@ -72,8 +72,8 @@ export default Vue.extend({
 
 <template>
   <div class="knowledges">
-    <div class="knowledges__list">
-      <KnowledgeItem
+    <DList>
+      <DItem
         v-for="(knowledge, index) in knowledges"
         :key="'knowledge_' + index"
         :title="knowledge.title"
@@ -82,7 +82,7 @@ export default Vue.extend({
         @edit="openFormToEdit(knowledge)"
         @delete="deleteKnowledge(knowledge._id)"
       />
-    </div>
+    </DList>
 
     <div class="knowledges__bottom">
       <button class="submit" @click="openFormToCreate">
@@ -114,19 +114,6 @@ export default Vue.extend({
 .knowledges {
   @extend .flex-column-center;
   padding: 40px 0;
-
-  &__list {
-    width: 800px;
-    max-width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-
-    .knowledge-item {
-      margin: 15px;
-    }
-  }
 
   &__bottom {
     width: 800px;
