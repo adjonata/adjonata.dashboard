@@ -29,13 +29,19 @@ export const actions: ActionTree<AuthState, AuthState> = {
         .then((response) => {
           commit('SET_LOGGED_IN', true)
           commit('SET_USER', response)
+
           this.$axios.setToken(response.authorization)
+          localStorage.setItem('authLogin', JSON.stringify(response))
+
           resolve(response)
         })
         .catch((error) => {
           commit('SET_LOGGED_IN', false)
           commit('SET_USER', null)
+
           this.$axios.setToken(false)
+          localStorage.removeItem('authLogin')
+
           reject(error)
         })
     })
@@ -43,6 +49,19 @@ export const actions: ActionTree<AuthState, AuthState> = {
   handleLogout({ commit }) {
     commit('SET_LOGGED_IN', false)
     commit('SET_USER', null)
+
+    this.$axios.setToken(false)
+    localStorage.removeItem('authLogin')
+  },
+  handleRefreshToken({ commit }, user: AuthLogin) {
+    return new Promise((resolve) => {
+      if (user) {
+        commit('SET_LOGGED_IN', true)
+        commit('SET_USER', user)
+        this.$axios.setToken(user.authorization)
+      }
+      resolve(true)
+    })
   },
 }
 

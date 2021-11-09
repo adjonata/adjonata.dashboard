@@ -13,7 +13,27 @@ export default Vue.extend({
   head: () => ({
     title: 'Dashboard - Login',
   }),
+  created() {
+    this.checkStorage()
+  },
   methods: {
+    checkStorage() {
+      const loggedIn = this.$store.state.auth.loggedIn
+
+      if (!loggedIn && process.browser) {
+        const authLogin = localStorage.getItem('authLogin')
+
+        if (authLogin) {
+          const authLoginObject = JSON.parse(authLogin) as AuthLogin
+
+          this.$store
+            .dispatch('auth/handleRefreshToken', authLoginObject)
+            .then(() => {
+              this.$router.push('/')
+            })
+        }
+      }
+    },
     async login() {
       // Check for error
       const { error: validationError } = ValidateLogin(this.form)
