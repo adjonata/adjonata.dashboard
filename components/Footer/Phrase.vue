@@ -20,8 +20,8 @@ export default Vue.extend({
     <div class="phrase__refresh" @click="$emit('refresh')">
       <span class="material-icons">refresh</span>
     </div>
-    <h3>{{ phrase }}</h3>
-    <h4>- {{ author }}</h4>
+    <h3 class="phrase__content">{{ phrase }}</h3>
+    <h4 class="phrase__author">- {{ author }}</h4>
   </div>
 </template>
 
