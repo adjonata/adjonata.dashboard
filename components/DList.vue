@@ -38,6 +38,7 @@ export default Vue.extend({})
   @media (min-width: $tablet) {
     .d-item {
       margin-right: 15px;
+      margin-bottom: 15px;
     }
   }
 }
