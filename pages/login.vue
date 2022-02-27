@@ -1,3 +1,22 @@
+<template>
+  <main class="login">
+    <header class="login__header">
+      <img src="~/assets/boy.svg" alt="Boy Image" />
+    </header>
+    <form class="login__form" @submit.prevent="login">
+      <h2>Dashboard</h2>
+      <DInput v-model="form.email" type="email" label="E-mail:" required />
+      <DInput
+        v-model="form.password"
+        type="password"
+        label="Password:"
+        required
+      />
+      <button class="submit" type="submit">Login</button>
+    </form>
+  </main>
+</template>
+
 <script lang="ts">
 import Vue from 'vue'
 import { AxiosResponse } from 'axios'
@@ -64,25 +83,6 @@ export default Vue.extend({
   },
 })
 </script>
-
-<template>
-  <main class="login">
-    <header class="login__header">
-      <img src="~/assets/boy.svg" alt="Boy Image" />
-    </header>
-    <form class="login__form" @submit.prevent="login">
-      <h2>Dashboard</h2>
-      <DInput v-model="form.email" type="email" label="E-mail:" required />
-      <DInput
-        v-model="form.password"
-        type="password"
-        label="Password:"
-        required
-      />
-      <button class="submit" type="submit">Login</button>
-    </form>
-  </main>
-</template>
 
 <style lang="scss">
 @import '~/styles/flex', '~/styles/variables';

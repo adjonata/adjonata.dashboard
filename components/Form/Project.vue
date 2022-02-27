@@ -1,3 +1,15 @@
+<template>
+  <form class="project-form form" @submit.prevent="submit">
+    <DInput v-model="form.title" label="Title" type="text" />
+    <DTextarea v-model="form.description" label="Description" type="text" />
+    <DInput v-model="form.image" label="Image link" type="text" />
+    <DInput v-model="form.link" label="Site link" type="text" />
+    <DInput v-model="form.color" label="Color" type="color" />
+    <DCheckbox v-model="form.spotlight" label="Spotlight" />
+    <button class="submit">Save</button>
+  </form>
+</template>
+
 <script lang="ts">
 import Vue from 'vue'
 import ValidateProject from '@/utils/project/validate'
@@ -61,18 +73,6 @@ export default Vue.extend({
   },
 })
 </script>
-
-<template>
-  <form class="project-form form" @submit.prevent="submit">
-    <DInput v-model="form.title" label="Title" type="text" />
-    <DTextarea v-model="form.description" label="Description" type="text" />
-    <DInput v-model="form.image" label="Image link" type="text" />
-    <DInput v-model="form.link" label="Site link" type="text" />
-    <DInput v-model="form.color" label="Color" type="color" />
-    <DCheckbox v-model="form.spotlight" label="Spotlight" />
-    <button class="submit">Save</button>
-  </form>
-</template>
 
 <style lang="scss">
 .project-form {

@@ -1,3 +1,45 @@
+<template>
+  <div class="projects">
+    <DList>
+      <DItem
+        v-for="(project, index) in projects"
+        :key="'project_' + index"
+        :title="project.title"
+        :image="project.image"
+        :link="project.link"
+        :color="project.color"
+        :spotlight="project.spotlight"
+        :description="project.description"
+        size="large"
+        @edit="openFormToEdit(project)"
+        @delete="deleteProject(project._id)"
+      />
+    </DList>
+
+    <div class="projects__bottom">
+      <button class="submit" @click="openFormToCreate">
+        <span class="material-icons">add</span>
+        <h4>New</h4>
+      </button>
+    </div>
+
+    <!-- MODAL -->
+    <DModal
+      :active="modalForm.show"
+      width="700px"
+      title="Project form"
+      @close="modalForm.show = false"
+    >
+      <FormProject
+        :initial-value="modalForm.value || {}"
+        @save="createProject"
+        @update="updateProject"
+        @close="modalForm.show = false"
+      />
+    </DModal>
+  </div>
+</template>
+
 <script lang="ts">
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
@@ -69,48 +111,6 @@ export default Vue.extend({
   },
 })
 </script>
-
-<template>
-  <div class="projects">
-    <DList>
-      <DItem
-        v-for="(project, index) in projects"
-        :key="'project_' + index"
-        :title="project.title"
-        :image="project.image"
-        :link="project.link"
-        :color="project.color"
-        :spotlight="project.spotlight"
-        :description="project.description"
-        size="large"
-        @edit="openFormToEdit(project)"
-        @delete="deleteProject(project._id)"
-      />
-    </DList>
-
-    <div class="projects__bottom">
-      <button class="submit" @click="openFormToCreate">
-        <span class="material-icons">add</span>
-        <h4>New</h4>
-      </button>
-    </div>
-
-    <!-- MODAL -->
-    <DModal
-      :active="modalForm.show"
-      width="700px"
-      title="Project form"
-      @close="modalForm.show = false"
-    >
-      <FormProject
-        :initial-value="modalForm.value || {}"
-        @save="createProject"
-        @update="updateProject"
-        @close="modalForm.show = false"
-      />
-    </DModal>
-  </div>
-</template>
 
 <style lang="scss">
 @import '~/styles/flex', '~/styles/variables';

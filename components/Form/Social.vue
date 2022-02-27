@@ -1,3 +1,12 @@
+<template>
+  <form class="social-form form" @submit.prevent="submit">
+    <DInput v-model="form.title" label="Title" type="text" />
+    <DInput v-model="form.image" label="Image link" type="text" />
+    <DInput v-model="form.link" label="Site link" type="text" />
+    <button class="submit">Save</button>
+  </form>
+</template>
+
 <script lang="ts">
 import Vue from 'vue'
 import ValidateSocial from '@/utils/social/validate'
@@ -53,14 +62,5 @@ export default Vue.extend({
   },
 })
 </script>
-
-<template>
-  <form class="social-form form" @submit.prevent="submit">
-    <DInput v-model="form.title" label="Title" type="text" />
-    <DInput v-model="form.image" label="Image link" type="text" />
-    <DInput v-model="form.link" label="Site link" type="text" />
-    <button class="submit">Save</button>
-  </form>
-</template>
 
 <style lang="scss"></style>

@@ -1,3 +1,30 @@
+<template>
+  <article :class="['d-item', size]">
+    <div class="d-item__infos">
+      <div v-if="spotlight" class="d-item__infos-spotlight">
+        <span class="material-icons"> star </span>
+      </div>
+      <img :src="image" :alt="title + '.png'" />
+      <h3
+        :class="{ link: !!link, spotlight }"
+        @click="link ? openLink() : null"
+      >
+        <div :style="{ backgroundColor: color || null }" />
+        {{ title }}
+      </h3>
+      <p v-if="description" v-text="description" />
+    </div>
+    <div class="d-item__actions">
+      <button class="small" @click="$emit('edit')">
+        <span class="material-icons">edit</span>
+      </button>
+      <button class="small" @click="$emit('delete')">
+        <span class="material-icons">delete</span>
+      </button>
+    </div>
+  </article>
+</template>
+
 <script lang="ts">
 import Vue from 'vue'
 
@@ -43,33 +70,6 @@ export default Vue.extend({
   },
 })
 </script>
-
-<template>
-  <article :class="['d-item', size]">
-    <div class="d-item__infos">
-      <div v-if="spotlight" class="d-item__infos-spotlight">
-        <span class="material-icons"> star </span>
-      </div>
-      <img :src="image" :alt="title + '.png'" />
-      <h3
-        :class="{ link: !!link, spotlight }"
-        @click="link ? openLink() : null"
-      >
-        <div :style="{ backgroundColor: color || null }" />
-        {{ title }}
-      </h3>
-      <p v-if="description" v-text="description" />
-    </div>
-    <div class="d-item__actions">
-      <button class="small" @click="$emit('edit')">
-        <span class="material-icons">edit</span>
-      </button>
-      <button class="small" @click="$emit('delete')">
-        <span class="material-icons">delete</span>
-      </button>
-    </div>
-  </article>
-</template>
 
 <style scoped lang="scss">
 @import '~/styles/variables', '~/styles/flex';

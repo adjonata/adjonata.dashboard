@@ -1,3 +1,41 @@
+<template>
+  <div class="socials">
+    <DList>
+      <DItem
+        v-for="(item, index) in social"
+        :key="'social_' + index"
+        :title="item.title"
+        :image="item.image"
+        :link="item.link"
+        @edit="openFormToEdit(item)"
+        @delete="deleteSocial(item._id)"
+      />
+    </DList>
+
+    <div class="socials__bottom">
+      <button class="submit" @click="openFormToCreate">
+        <span class="material-icons">add</span>
+        <h4>New</h4>
+      </button>
+    </div>
+
+    <!-- MODAL -->
+    <DModal
+      :active="modalForm.show"
+      width="700px"
+      title="Social form"
+      @close="modalForm.show = false"
+    >
+      <FormSocial
+        :initial-value="modalForm.value || {}"
+        @save="createSocial"
+        @update="updateSocial"
+        @close="modalForm.show = false"
+      />
+    </DModal>
+  </div>
+</template>
+
 <script lang="ts">
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
@@ -69,44 +107,6 @@ export default Vue.extend({
   },
 })
 </script>
-
-<template>
-  <div class="socials">
-    <DList>
-      <DItem
-        v-for="(item, index) in social"
-        :key="'social_' + index"
-        :title="item.title"
-        :image="item.image"
-        :link="item.link"
-        @edit="openFormToEdit(item)"
-        @delete="deleteSocial(item._id)"
-      />
-    </DList>
-
-    <div class="socials__bottom">
-      <button class="submit" @click="openFormToCreate">
-        <span class="material-icons">add</span>
-        <h4>New</h4>
-      </button>
-    </div>
-
-    <!-- MODAL -->
-    <DModal
-      :active="modalForm.show"
-      width="700px"
-      title="Social form"
-      @close="modalForm.show = false"
-    >
-      <FormSocial
-        :initial-value="modalForm.value || {}"
-        @save="createSocial"
-        @update="updateSocial"
-        @close="modalForm.show = false"
-      />
-    </DModal>
-  </div>
-</template>
 
 <style lang="scss">
 @import '~/styles/flex', '~/styles/variables';
