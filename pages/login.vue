@@ -18,11 +18,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
 import { AxiosResponse } from 'axios'
+import mixins from 'vue-typed-mixins'
 import ValidateLogin from '@/utils/login/validate'
+import AuthMixin from '@/mixins/auth.mixin'
 
-export default Vue.extend({
+export default mixins(AuthMixin).extend({
   data: () => ({
     form: {
       email: '',
@@ -32,27 +33,10 @@ export default Vue.extend({
   head: () => ({
     title: 'Dashboard - Login',
   }),
-  created() {
-    this.checkStorage()
+  async created() {
+    await this.checkCookies()
   },
   methods: {
-    checkStorage() {
-      const loggedIn = this.$store.state.auth.loggedIn
-
-      if (!loggedIn && process.browser) {
-        const authLogin = localStorage.getItem('authLogin')
-
-        if (authLogin) {
-          const authLoginObject = JSON.parse(authLogin) as AuthLogin
-
-          this.$store
-            .dispatch('auth/handleRefreshToken', authLoginObject)
-            .then(() => {
-              this.$router.push('/')
-            })
-        }
-      }
-    },
     async login() {
       // Check for error
       const { error: validationError } = ValidateLogin(this.form)
