@@ -1,3 +1,19 @@
+<template>
+  <div v-if="active" class="modal">
+    <div class="modal__content" :style="{ width }">
+      <div class="modal__content-header">
+        <span v-text="title" />
+        <button class="small" @click="$emit('close')">
+          <span class="material-icons">close</span>
+        </button>
+      </div>
+      <div class="modal__content-body">
+        <slot />
+      </div>
+    </div>
+  </div>
+</template>
+
 <script lang="ts">
 import Vue from 'vue'
 
@@ -19,27 +35,11 @@ export default Vue.extend({
 })
 </script>
 
-<template>
-  <div v-if="active" class="modal">
-    <div class="modal__content" :style="{ width }">
-      <div class="modal__content-header">
-        <span v-text="title" />
-        <button class="small" @click="$emit('close')">
-          <span class="material-icons">close</span>
-        </button>
-      </div>
-      <div class="modal__content-body">
-        <slot />
-      </div>
-    </div>
-  </div>
-</template>
-
 <style lang="scss">
 @import '~/styles/variables', '~/styles/flex';
 
 .modal {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.3);

@@ -1,3 +1,10 @@
+<template>
+  <form class="about-form form" @submit.prevent="submit">
+    <DTextarea v-model="form.description" label="Description" />
+    <button class="submit">Save</button>
+  </form>
+</template>
+
 <script lang="ts">
 import Vue from 'vue'
 import ValidateAbout from '@/utils/about/validate'
@@ -51,13 +58,6 @@ export default Vue.extend({
   },
 })
 </script>
-
-<template>
-  <form class="about-form form" @submit.prevent="submit">
-    <DTextarea v-model="form.description" label="Description" />
-    <button class="submit">Save</button>
-  </form>
-</template>
 
 <style lang="scss">
 .about-form {

@@ -1,3 +1,13 @@
+<template>
+  <div class="phrase">
+    <div class="phrase__refresh" @click="$emit('refresh')">
+      <span class="material-icons">refresh</span>
+    </div>
+    <h3 class="phrase__content">{{ phrase }}</h3>
+    <h4 class="phrase__author">- {{ author }}</h4>
+  </div>
+</template>
+
 <script lang="ts">
 import Vue from 'vue'
 
@@ -14,16 +24,6 @@ export default Vue.extend({
   },
 })
 </script>
-
-<template>
-  <div class="phrase">
-    <div class="phrase__refresh" @click="$emit('refresh')">
-      <span class="material-icons">refresh</span>
-    </div>
-    <h3 class="phrase__content">{{ phrase }}</h3>
-    <h4 class="phrase__author">- {{ author }}</h4>
-  </div>
-</template>
 
 <style scoped lang="scss">
 @import '~/styles/variables.scss', '~/styles/flex.scss';

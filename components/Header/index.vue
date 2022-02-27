@@ -1,21 +1,3 @@
-<script lang="ts">
-import Vue from 'vue'
-import sections from '@/utils/sections'
-
-export default Vue.extend({
-  data: () => ({
-    sections,
-  }),
-  methods: {
-    async logout() {
-      await this.$store.dispatch('auth/handleLogout')
-      await this.$store.dispatch('informations/setLoaded', false)
-      this.$router.push('/login')
-    },
-  },
-})
-</script>
-
 <template>
   <header class="header">
     <div class="header__logout">
@@ -35,6 +17,24 @@ export default Vue.extend({
     </div>
   </header>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+import sections from '@/utils/sections'
+
+export default Vue.extend({
+  data: () => ({
+    sections,
+  }),
+  methods: {
+    async logout() {
+      await this.$store.dispatch('auth/handleLogout')
+      await this.$store.dispatch('informations/setLoaded', false)
+      this.$router.push('/login')
+    },
+  },
+})
+</script>
 
 <style scoped lang="scss">
 @import '~/styles/flex', '~/styles/variables';

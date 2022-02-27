@@ -1,16 +1,3 @@
-<script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({
-  props: {
-    about: {
-      type: String,
-      required: true,
-    },
-  },
-})
-</script>
-
 <template>
   <div class="about-item">
     <span class="material-icons about-item__icon">person</span>
@@ -24,6 +11,19 @@ export default Vue.extend({
     </button>
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
+  props: {
+    about: {
+      type: String,
+      required: true,
+    },
+  },
+})
+</script>
 
 <style lang="scss">
 @import '~/styles/variables';

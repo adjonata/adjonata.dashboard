@@ -1,3 +1,15 @@
+<template>
+  <label class="d-input">
+    {{ label }}
+    <input
+      :value="value"
+      :type="type"
+      v-bind="$attrs"
+      @input="$emit('input', $event.target.value)"
+    />
+  </label>
+</template>
+
 <script lang="ts">
 import Vue from 'vue'
 
@@ -21,18 +33,6 @@ export default Vue.extend({
   },
 })
 </script>
-
-<template>
-  <label class="d-input">
-    {{ label }}
-    <input
-      :value="value"
-      :type="type"
-      v-bind="$attrs"
-      @input="$emit('input', $event.target.value)"
-    />
-  </label>
-</template>
 
 <style lang="scss" scoped>
 @import '~/styles/variables';

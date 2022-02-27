@@ -1,3 +1,13 @@
+<template>
+  <div class="totalizer">
+    <h2>{{ count }}</h2>
+    <div class="totalizer__description">
+      <span class="material-icons" v-text="icon" />
+      <h4>{{ title }}</h4>
+    </div>
+  </div>
+</template>
+
 <script lang="ts">
 import Vue from 'vue'
 
@@ -18,16 +28,6 @@ export default Vue.extend({
   },
 })
 </script>
-
-<template>
-  <div class="totalizer">
-    <h2>{{ count }}</h2>
-    <div class="totalizer__description">
-      <span class="material-icons" v-text="icon" />
-      <h4>{{ title }}</h4>
-    </div>
-  </div>
-</template>
 
 <style scoped lang="scss">
 @import '~/styles/variables';

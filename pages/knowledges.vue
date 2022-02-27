@@ -1,3 +1,41 @@
+<template>
+  <div class="knowledges">
+    <DList>
+      <DItem
+        v-for="(knowledge, index) in knowledges"
+        :key="'knowledge_' + index"
+        :title="knowledge.title"
+        :image="knowledge.image"
+        :link="knowledge.link"
+        @edit="openFormToEdit(knowledge)"
+        @delete="deleteKnowledge(knowledge._id)"
+      />
+    </DList>
+
+    <div class="knowledges__bottom">
+      <button class="submit" @click="openFormToCreate">
+        <span class="material-icons">add</span>
+        <h4>New</h4>
+      </button>
+    </div>
+
+    <!-- MODAL -->
+    <DModal
+      :active="modalForm.show"
+      width="700px"
+      title="Knowledge form"
+      @close="modalForm.show = false"
+    >
+      <FormKnowledge
+        :initial-value="modalForm.value || {}"
+        @save="createKnowledge"
+        @update="updateKnowledge"
+        @close="modalForm.show = false"
+      />
+    </DModal>
+  </div>
+</template>
+
 <script lang="ts">
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
@@ -69,44 +107,6 @@ export default Vue.extend({
   },
 })
 </script>
-
-<template>
-  <div class="knowledges">
-    <DList>
-      <DItem
-        v-for="(knowledge, index) in knowledges"
-        :key="'knowledge_' + index"
-        :title="knowledge.title"
-        :image="knowledge.image"
-        :link="knowledge.link"
-        @edit="openFormToEdit(knowledge)"
-        @delete="deleteKnowledge(knowledge._id)"
-      />
-    </DList>
-
-    <div class="knowledges__bottom">
-      <button class="submit" @click="openFormToCreate">
-        <span class="material-icons">add</span>
-        <h4>New</h4>
-      </button>
-    </div>
-
-    <!-- MODAL -->
-    <DModal
-      :active="modalForm.show"
-      width="700px"
-      title="Knowledge form"
-      @close="modalForm.show = false"
-    >
-      <FormKnowledge
-        :initial-value="modalForm.value || {}"
-        @save="createKnowledge"
-        @update="updateKnowledge"
-        @close="modalForm.show = false"
-      />
-    </DModal>
-  </div>
-</template>
 
 <style lang="scss">
 @import '~/styles/flex', '~/styles/variables';

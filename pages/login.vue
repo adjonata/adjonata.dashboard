@@ -1,9 +1,29 @@
-<script lang="ts">
-import Vue from 'vue'
-import { AxiosResponse } from 'axios'
-import ValidateLogin from '@/utils/login/validate'
+<template>
+  <main class="login">
+    <header class="login__header">
+      <img src="~/assets/boy.svg" alt="Boy Image" />
+    </header>
+    <form class="login__form" @submit.prevent="login">
+      <h2>Dashboard</h2>
+      <DInput v-model="form.email" type="email" label="E-mail:" required />
+      <DInput
+        v-model="form.password"
+        type="password"
+        label="Password:"
+        required
+      />
+      <button class="submit" type="submit">Login</button>
+    </form>
+  </main>
+</template>
 
-export default Vue.extend({
+<script lang="ts">
+import { AxiosResponse } from 'axios'
+import mixins from 'vue-typed-mixins'
+import ValidateLogin from '@/utils/login/validate'
+import AuthMixin from '@/mixins/auth.mixin'
+
+export default mixins(AuthMixin).extend({
   data: () => ({
     form: {
       email: '',
@@ -13,27 +33,10 @@ export default Vue.extend({
   head: () => ({
     title: 'Dashboard - Login',
   }),
-  created() {
-    this.checkStorage()
+  async created() {
+    await this.checkCookies()
   },
   methods: {
-    checkStorage() {
-      const loggedIn = this.$store.state.auth.loggedIn
-
-      if (!loggedIn && process.browser) {
-        const authLogin = localStorage.getItem('authLogin')
-
-        if (authLogin) {
-          const authLoginObject = JSON.parse(authLogin) as AuthLogin
-
-          this.$store
-            .dispatch('auth/handleRefreshToken', authLoginObject)
-            .then(() => {
-              this.$router.push('/')
-            })
-        }
-      }
-    },
     async login() {
       // Check for error
       const { error: validationError } = ValidateLogin(this.form)
@@ -64,25 +67,6 @@ export default Vue.extend({
   },
 })
 </script>
-
-<template>
-  <main class="login">
-    <header class="login__header">
-      <img src="~/assets/boy.svg" alt="Boy Image" />
-    </header>
-    <form class="login__form" @submit.prevent="login">
-      <h2>Dashboard</h2>
-      <DInput v-model="form.email" type="email" label="E-mail:" required />
-      <DInput
-        v-model="form.password"
-        type="password"
-        label="Password:"
-        required
-      />
-      <button class="submit" type="submit">Login</button>
-    </form>
-  </main>
-</template>
 
 <style lang="scss">
 @import '~/styles/flex', '~/styles/variables';

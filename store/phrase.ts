@@ -1,4 +1,4 @@
-import { GetterTree, ActionTree, MutationTree } from 'vuex'
+import type { GetterTree, ActionTree, MutationTree } from 'vuex'
 interface PhraseState {
   phrase: string | null
   author: string | null

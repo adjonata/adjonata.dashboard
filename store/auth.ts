@@ -1,4 +1,5 @@
-import { GetterTree, ActionTree, MutationTree } from 'vuex'
+import type { GetterTree, ActionTree, MutationTree } from 'vuex'
+import Cookies from 'js-cookie'
 
 interface AuthState {
   loggedIn: boolean
@@ -20,7 +21,7 @@ export const mutations: MutationTree<AuthState> = {
 }
 
 export const actions: ActionTree<AuthState, AuthState> = {
-  handleLogin({ commit }, body: Auth) {
+  handleLogin({ commit, dispatch }, body: Auth) {
     return new Promise((resolve, reject) => {
       const auth = this.app.$api.auth
 
@@ -31,17 +32,15 @@ export const actions: ActionTree<AuthState, AuthState> = {
           commit('SET_USER', response)
 
           this.$axios.setToken(response.authorization)
-          localStorage.setItem('authLogin', JSON.stringify(response))
+
+          Cookies.set('auth', JSON.stringify(response), {
+            expires: 1,
+          })
 
           resolve(response)
         })
         .catch((error) => {
-          commit('SET_LOGGED_IN', false)
-          commit('SET_USER', null)
-
-          this.$axios.setToken(false)
-          localStorage.removeItem('authLogin')
-
+          dispatch('handleLogout')
           reject(error)
         })
     })
@@ -51,7 +50,7 @@ export const actions: ActionTree<AuthState, AuthState> = {
     commit('SET_USER', null)
 
     this.$axios.setToken(false)
-    localStorage.removeItem('authLogin')
+    Cookies.remove('auth')
   },
   handleRefreshToken({ commit }, user: AuthLogin) {
     return new Promise((resolve) => {
