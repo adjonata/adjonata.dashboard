@@ -1,11 +1,11 @@
 import axiosConfig from './config/axios.ts'
 
 export default {
-  target: 'static',
-  ssr: false,
-  generate: {
-    fallback: true,
-  },
+  // target: 'static',
+  ssr: true,
+  // generate: {
+  //   fallback: true,
+  // },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
